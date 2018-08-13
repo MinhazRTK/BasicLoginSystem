@@ -1,5 +1,6 @@
 package com.batch2.m0nk3y.basicloginsystem;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,15 +27,22 @@ public class MainActivity extends AppCompatActivity {
                 String username = id.getText().toString();
                 String password = pass.getText().toString();
 
-                if(username.equals("m0nk3y") && password.equals("admin")){
-                    Intent i = new Intent(MainActivity.this,LoggedIn.class);
+                if (username.equals("admin") && password.equals("admin")) {
+                    Intent i = new Intent(MainActivity.this, LoggedIn.class);
                     startActivity(i);
-                }
-                else {
+                } else {
                     AlertDialog.Builder a = new AlertDialog.Builder(MainActivity.this);
-                    a.setTitle("Error!");
-                    a.setMessage("Wrong Credentials!");
-                    a.show();
+                    a.setTitle("Log In");
+                    a.setMessage("Username and Password Do Not Match!");
+                    a.setCancelable(true);
+                    a.setNegativeButton("Try Again!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                    AlertDialog alertDialog = a.create();
+                    alertDialog.show();
                 }
             }
         });
@@ -42,9 +50,34 @@ public class MainActivity extends AppCompatActivity {
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,ForgotPassword.class);
+                Intent i = new Intent(MainActivity.this, ForgotPassword.class);
                 startActivity(i);
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder ealert = new AlertDialog.Builder(MainActivity.this);
+        ealert.setTitle("Exit Application");
+        ealert.setMessage("Are you sure want to close the application?");
+        ealert.setCancelable(true);
+        ealert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+
+        ealert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = ealert.create();
+        alertDialog.show();
     }
 }
