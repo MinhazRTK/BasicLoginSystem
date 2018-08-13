@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText id = findViewById(R.id.username);
         final EditText pass = findViewById(R.id.pass);
         Button btn = findViewById(R.id.btn);
+        final TextView forgot = findViewById(R.id.forgot_pass);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,8 +31,19 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                 }
                 else {
-                    id.setText("wrong");
+                    AlertDialog.Builder a = new AlertDialog.Builder(MainActivity.this);
+                    a.setTitle("Error!");
+                    a.setMessage("Wrong Credentials!");
+                    a.show();
                 }
+            }
+        });
+
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this,ForgotPassword.class);
+                startActivity(i);
             }
         });
     }
