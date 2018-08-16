@@ -16,11 +16,17 @@ public class LoggedIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_in);
         final String[] mylist = {"Wake up","Brushing","Breakfast","Go to University","Take Lunch","Finish Lab","Return Home"};
+        //final String[] mylist1 = {"7am","7:10am","7:15am","7:30am","7:50am","1pm","5pm"};
+
 
         //ListAdapter myListAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mylist);
         ListAdapter myListAdapter = new CustomAdapter(this,mylist);
         ListView listView = findViewById(R.id.mylist);
         listView.setAdapter(myListAdapter);
+
+//        ListAdapter myListAdapter2 = new CustomAdapter(this,mylist1);
+//        ListView listView2 = findViewById(R.id.secondtext);
+//        listView.setAdapter(myListAdapter2);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

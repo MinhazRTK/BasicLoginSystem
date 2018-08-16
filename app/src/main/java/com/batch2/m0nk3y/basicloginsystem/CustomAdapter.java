@@ -27,8 +27,15 @@ public class CustomAdapter extends ArrayAdapter {
         String mylist  = (String) getItem(position);
         TextView textView = customView.findViewById(R.id.adaptertext);
         ImageView imageView = customView.findViewById(R.id.adapterimage);
-
         textView.setText(mylist);
+
+
+//        String mylist1  = (String) getItem(position);
+//        TextView textView1 = customView.findViewById(R.id.secondtext);
+//        textView1.setText(mylist1);
+
+
+
         imageView.setImageResource(R.drawable.m0nk3y);
         return customView;
     }
