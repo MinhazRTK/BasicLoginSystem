@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoggedIn" />
-        <activity android:name=".ForgotPassword"></activity>
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".WebActivity"></activity>
     </application>
 
 </manifest>
